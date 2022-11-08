@@ -14,7 +14,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema videoclub
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `videoclub` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 USE `videoclub` ;
 
 -- -----------------------------------------------------
@@ -46,17 +45,17 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`film` (
   `film_id` INT NOT NULL,
-  `description` VARCHAR(250) NULL,
+  `description` VARCHAR(50) NULL,
   `release_year` INT NULL,
   `rental_duration` INT NULL,
-  `rental_rate` DECIMAL(250) NULL,
+  `rental_rate` DECIMAL(50) NULL,
   `lenght` INT NULL,
-  `replacement_cost` DECIMAL(250) NULL,
-  `rating` VARCHAR(250) NULL,
-  `special_features` VARCHAR(250) NULL,
-  `last_update` VARCHAR(250) NULL,
+  `replacement_cost` DECIMAL(50) NULL,
+  `rating` VARCHAR(50) NULL,
+  `special_features` VARCHAR(50) NULL,
+  `last_update` VARCHAR(50) NULL,
   `language_id` INT NULL,
-  `title` VARCHAR(250) NULL,
+  `title` VARCHAR(50) NULL,
   PRIMARY KEY (`film_id`))
 ENGINE = InnoDB;
 
@@ -66,12 +65,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`rental` (
   `rental_id` INT NOT NULL,
-  `rental_date` VARCHAR(250) NULL,
+  `rental_date` VARCHAR(50) NULL,
   `inventory_id` INT NULL,
   `customer_id` INT NULL,
-  `return_date` VARCHAR(250) NULL,
+  `return_date` VARCHAR(50) NULL,
   `staff_id` INT NULL,
-  `last_update` VARCHAR(250) NULL,
+  `last_update` VARCHAR(50) NULL,
   PRIMARY KEY (`rental_id`))
 ENGINE = InnoDB;
 
@@ -82,7 +81,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `videoclub`.`inventory` (
   `inventory_id` INT NOT NULL,
   `store_id` INT NULL,
-  `last_update` VARCHAR(250) NULL,
+  `last_update` VARCHAR(50) NULL,
   `film_id` INT NULL,
   `film_film_id` INT NOT NULL,
   `rental_rental_id` INT NOT NULL,
@@ -107,8 +106,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`language` (
   `language_id` INT NOT NULL,
-  `name` VARCHAR(250) NULL,
-  `last_update` VARCHAR(250) NULL,
+  `name` VARCHAR(50) NULL,
+  `last_update` VARCHAR(50) NULL,
   PRIMARY KEY (`language_id`))
 ENGINE = InnoDB;
 
@@ -117,29 +116,33 @@ ENGINE = InnoDB;
 -- Table `videoclub`.`old_HDD`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`old_HDD` (
-  `first_name` VARCHAR(450) NULL,
-  `last_name` VARCHAR(450) NULL,
+  `first_name` VARCHAR(50) NULL,
+  `last_name` VARCHAR(50) NULL,
   `release_year` INT NULL,
   `category_id` INT NULL,
-  `name` VARCHAR(450) NULL,
+  `name` VARCHAR(50) NULL,
   `category_category_id` INT NOT NULL,
-  `title` VARCHAR(250) NULL,
-  PRIMARY KEY (`category_category_id`),
+  `actor_actor_id` INT NOT NULL,
+  `film_film_id` INT NOT NULL,
+  `title` VARCHAR(50) NULL,
+  `actor_id` INT NOT NULL,
+  `film_id` INT NOT NULL,
+  PRIMARY KEY (`category_category_id`,`actor_actor_id`,`film_film_id`),
   INDEX `fk_old_HDD_actor1_idx` (`name` ASC) VISIBLE,
   INDEX `fk_old_HDD_film1_idx` (`title` ASC) VISIBLE,
   CONSTRAINT `fk_old_HDD_category1`
     FOREIGN KEY (`category_category_id`)
-    REFERENCES `cinema`.`category` (`category_id`)
+    REFERENCES `videoclub`.`category` (`category_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_old_HDD_actor1`
-    FOREIGN KEY (`name`)
-    REFERENCES `videoclub`.`actor` (`name`)
+    FOREIGN KEY (`actor_actor_id`)
+    REFERENCES `videoclub`.`actor` (`actor_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_old_HDD_film1`
-    FOREIGN KEY (`title`)
-    REFERENCES `videoclub`.`film` (`title`)
+    FOREIGN KEY (`film_film_id`)
+    REFERENCES `videoclub`.`film` (`film_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -22,3 +22,4 @@ Create a new SQL Database and nurture it with data.
 
 
 ### Create the SQL Dataframe:
+(https://github.com/mariamino/database_project/blob/main/img/esquema.jpg)
