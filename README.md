@@ -21,5 +21,37 @@ Create a new SQL Database and nurture it with data.
 - Save to a new csv
 
 
-### Create the SQL Dataframe:
+### Create the SQL Dataframe and its relations:
 ![portada](https://github.com/mariamino/database_project/blob/main/img/esquema.png)
+
+### Analyze the data:
+
+- Create a temporary table with the relevant information to analyze:
+
+![portada](https://github.com/mariamino/database_project/blob/main/img/temporary.png)
+
+
+- Analyze which film repeats most:
+
+![portada](https://github.com/mariamino/database_project/blob/main/img/repetition_titles.png)
+
+
+- What's the most popular category:
+
+![portada](https://github.com/mariamino/database_project/blob/main/img/category.png)
+
+
+- Who's the most popular actor:
+
+![portada](https://github.com/mariamino/database_project/blob/main/img/actor.png)
+
+
+- What's the most popular rental duration:
+
+![portada](https://github.com/mariamino/database_project/blob/main/img/rental.png)
+
+
+- What's the most popular rate:
+
+![portada](https://github.com/mariamino/database_project/blob/main/img/rate.png)
+
